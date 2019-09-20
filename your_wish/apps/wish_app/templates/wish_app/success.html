@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Success</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: black;
+        }
+        
+        .rainbow-text {
+            margin: 400px;
+            background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='header'>
+        {% if messages %} {% for message in messages %} {{ message.message }} {% endfor %} {% endif %}
+    </div>
+
+    <h2>Success! Welcome!</h2>
+
+    <h1>Success! Your wish became true And.... YOU!</h1>
+    <h1 class="rainbow-text">{{ user.first_name }} has SUCCESSFULLY registered (or logged in !
+        <h1>
+            <div action='/logout' method='post'>
+                {% csrf_token %}
+
+                <div>
+                    <h1>
+                        <form action='/logout' method='post'>
+                            {% csrf_token %}
+                </div>
+
+                <div id='post'>
+                    <form method='POST' action='/add_wish'>
+                        {% csrf_token %} MAke A Wish:<input type='text' name='wish'><br>
+                        <input type='submit' value='Make Your Wish'><br>
+
+
+                    </form>
+                </div>
+
+
+                <div id='wish'>
+                    <p>Your wish here</p>
+                    {% for wish in all_wishes %} {{wish.wish}} posted by: {{wish.poster.name}} <br> {{messages.user_who_kept.all}}
+                    <a href='/keep/{{wish.id}}'>Wish Kept</a> {% endfor %}
+                </div>
+</body>
+
+</html>

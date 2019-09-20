@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Create</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Add a New Show</h1>
+        <a href="/shows">Go Back</a>
+        
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form action="/shows/create" method="POST">
+            {% csrf_token %}
+            Title:
+            <input type="text" name="title" placeholder="Add a show here...">
+
+            Network:
+            <input type="text" name="network" placeholder="Add a network here...">
+
+            Release Date:
+            <input type="date" name="release">
+
+            Description:
+            <input type="text" name="desc" placeholder="Add a description">
+
+            <input type="submit" value="Create">
+
+        </form>
+    </div>
+
+</body>
+</html>

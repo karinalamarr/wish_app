@@ -1,0 +1,10 @@
+{
+    "python.formatting.provider": "yapf",
+    "indentRainbow.colors": [
+        "rgba(105,105,105,0.07)",
+        "rgba(128,128,128,0.07)",
+        "rgba(169,169,169,0.07)",
+        "rgba(192,102,192,0.07)"
+    ],
+
+}
